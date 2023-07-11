@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import { useTicketProjectList } from '@/context/contractContext';
 import { OneProject } from '@/domain/OneProject';
 import OneProjectPart from '@/components/Project/main/OneProjectPart';
+import Loding from '@/compounds/Loding';
 
 export default function ProjectId() {
   const id = usePathname()?.substring(9);
@@ -33,7 +34,13 @@ export default function ProjectId() {
       {id != null && oneProjectData !== null ? (
         <OneProjectPart projectData={oneProjectData} />
       ) : (
-        <></>
+        <div className="flex justify-center">
+          <div className="inner">
+            <div className="flex justify-center">
+              <Loding></Loding>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

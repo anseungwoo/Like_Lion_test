@@ -22,6 +22,7 @@ import {
 import { AppContext } from '@/app/layout';
 import { OneTicket } from '@/domain/OneTicket';
 import { OneProject } from '@/domain/OneProject';
+import Loding from '@/compounds/Loding';
 
 interface OneProjectPartProps {
   projectData: OneProject | null;
@@ -141,7 +142,7 @@ function OneProjectPart({ projectData, ...restProps }: OneProjectPartProps) {
           <div className="project-description">{projectData.description}</div>
           <div className="text-center">티켓 목록</div>
           <div className="mx-auto flex flex-wrap w-1/2">
-            {projectData &&
+            {projectData ? (
               projectData.tickets.map((v, i) => {
                 return (
                   <OneTicketThumb
@@ -154,7 +155,10 @@ function OneProjectPart({ projectData, ...restProps }: OneProjectPartProps) {
                     nowCount={count}
                   />
                 );
-              })}
+              })
+            ) : (
+              <Loding></Loding>
+            )}
           </div>
 
           <div className="flex flex-wrap justify-center my-3 w-[80%] mx-auto text-[20px]">
@@ -213,12 +217,13 @@ function OneProjectPart({ projectData, ...restProps }: OneProjectPartProps) {
         </div>
       </div>
     );
+  } else {
+    return (
+      <div className="ml-2 text-black" {...restProps}>
+        <Loding></Loding>
+      </div>
+    );
   }
-  return (
-    <div className="ml-2 text-black" {...restProps}>
-      onC ... 로딩중 ...
-    </div>
-  );
 }
 
 export default OneProjectPart;

@@ -1,8 +1,9 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 // import projectMockData from "../../../mock-data/v0/projects.json";
 import OneProjectThumb from './OneProjectThumb';
 import { useTicketProjectList } from '@/context/contractContext';
+import Loding from '@/compounds/Loding';
 
 interface tikectAvailable {
   available: boolean;
@@ -11,10 +12,18 @@ interface tikectAvailable {
 function ProjectSlider({ available }: tikectAvailable) {
   const { projects } = useTicketProjectList();
 
+  if (projects.length === 0) {
+    return (
+      <div className="project-wrapper ">
+        <Loding></Loding>
+      </div>
+    );
+  }
+
   return (
     <div className="project-wrapper ">
       {projects.map((oneProject, index) => {
-        return (
+        return oneProject ? (
           <OneProjectThumb
             key={oneProject.contract}
             contract={oneProject.contract}
@@ -23,6 +32,8 @@ function ProjectSlider({ available }: tikectAvailable) {
             imgUrl={oneProject.imgUrl}
             tickets={oneProject.tickets}
           />
+        ) : (
+          <Loding></Loding>
         );
       })}
     </div>

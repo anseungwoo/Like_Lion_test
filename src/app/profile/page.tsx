@@ -9,6 +9,7 @@ import OneProjectThumb from '@/components/Project/home/OneProjectThumb';
 import TicketProjectCheck from '@/components/Project/home/TicketProjectCheck';
 import LoginDialog from '@/compounds/Redirect';
 import { redirect } from 'next/navigation';
+import Loding from '@/compounds/Loding';
 
 export default function profile() {
   const { account } = useContext(AppContext);
@@ -68,34 +69,46 @@ export default function profile() {
         <div className="text-[30px] font-bold py-10 px-2">
           <div>내 프로젝트 목록</div>
           <div className="bg-white grid grid-cols-3 auto-rows-auto gap-10 px-10 py-10">
-            {myProjects.map((v, i) => {
-              return (
-                <OneProjectThumb
-                  key={`${v.contract}_${i}`}
-                  contract={v.contract}
-                  description={v.description}
-                  title={v.title}
-                  imgUrl={v.imgUrl}
-                  tickets={v.tickets}
-                />
-              );
-            })}
+            {myProjects ? (
+              myProjects.map((v, i) => {
+                return v ? (
+                  <OneProjectThumb
+                    key={`${v.contract}_${i}`}
+                    contract={v.contract}
+                    description={v.description}
+                    title={v.title}
+                    imgUrl={v.imgUrl}
+                    tickets={v.tickets}
+                  />
+                ) : (
+                  <Loding></Loding>
+                );
+              })
+            ) : (
+              <Loding></Loding>
+            )}
           </div>
         </div>
         <div className="text-[30px] font-bold py-10 px-2">
           <div>내 NFT 목록</div>
           <div className="bg-white grid grid-cols-3 auto-rows-auto gap-10 px-10 py-10">
-            {myTickets.map((v, i) => {
-              return (
-                <TicketProjectCheck
-                  key={`${v.id}_${v.contract}`}
-                  id={v.id}
-                  contract={v.contract}
-                  imgUrl={v.imgUrl}
-                  isUsed={v.ticket_is_used}
-                />
-              );
-            })}
+            {myTickets ? (
+              myTickets.map((v, i) => {
+                return v ? (
+                  <TicketProjectCheck
+                    key={`${v.id}_${v.contract}`}
+                    id={v.id}
+                    contract={v.contract}
+                    imgUrl={v.imgUrl}
+                    isUsed={v.ticket_is_used}
+                  />
+                ) : (
+                  <Loding></Loding>
+                );
+              })
+            ) : (
+              <Loding></Loding>
+            )}
           </div>
         </div>
         {/* <div className="text-[30px] font-bold py-10 px-2">
