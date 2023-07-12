@@ -227,8 +227,8 @@ function OneProjectPart({ projectData, ...restProps }: OneProjectPartProps) {
               )}`}</div> */}
               </div>
             ) : (
-              <div className="flex justify-center mx-auto border-[1px] border-black rounded-3xl w-[300px] py-2 text-center">
-                <div className="mr-[4px]">남은 시간 : </div>
+              <div className="flex justify-center mx-auto border-[1px] border-white rounded-3xl w-[300px] py-2 text-center">
+                <div className="mr-[4px] text-white">남은 시간 : </div>
                 <div className="text-red-500">
                   {msToPeriodStrEng(lastCheckTime + oneDayDateNumber - nowTime)}
                 </div>
