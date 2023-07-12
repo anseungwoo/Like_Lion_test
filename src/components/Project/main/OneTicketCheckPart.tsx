@@ -18,7 +18,7 @@ import {
 import { AppContext } from '@/app/layout';
 import { redirect } from 'next/navigation';
 import { BlockLoding } from '@/compounds/Loding';
-
+const { Badge, Descriptions } = require('antd');
 export interface ProjectData {
   id: number;
   contract: string;
@@ -106,7 +106,25 @@ function OneTicketCheckPart({
         <div className="inner">
           <img className="project-img" src={ticketData.imgUrl} alt="" />
           <div className="project-title">{projectData.title}</div>
-          <div className="project-description">{projectData.description}</div>
+          <Descriptions title="Tiket Info" bordered>
+            <Descriptions.Item label="티켓이름" span={3}>
+              {projectData.title}
+            </Descriptions.Item>
+
+            <Descriptions.Item label="일정">
+              {projectData.date}
+            </Descriptions.Item>
+            <Descriptions.Item label="공연시간" span={2}>
+              {projectData.runningTime}
+            </Descriptions.Item>
+            <Descriptions.Item label="Status" span={3}>
+              <Badge status="processing" text="Running" />
+            </Descriptions.Item>
+
+            <Descriptions.Item label="티켓 정보">
+              {projectData.description}
+            </Descriptions.Item>
+          </Descriptions>
           <div className="project_ticket">
             {isOwner && validUse && !ticketData.ticket_is_used ? (
               <div
@@ -147,7 +165,6 @@ function OneTicketCheckPart({
               </DialogActions>
             </Dialog>
           )}
-          ;
         </div>
       </div>
     );

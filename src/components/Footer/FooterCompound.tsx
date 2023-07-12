@@ -9,13 +9,14 @@ function FooterCompound() {
       <div className="footer-title">
         <Image
           className="logo"
-          src={`/images/logo.png`}
+          src={`/images/logo3.png`}
           width={100}
           height={50}
           alt=""
         />
         <div className="mt-3">
-          Link3 is a Web3 native social platform built on CyberConnect protocol.
+          cyket is a Web3 native Tiketing platform built on CyberConnect
+          protocol.
         </div>
       </div>
       <div className="footer-row">

@@ -24,7 +24,7 @@ import { OneTicket } from '@/domain/OneTicket';
 import { OneProject } from '@/domain/OneProject';
 import { BlockLoding, Loding } from '@/compounds/Loding';
 import { redirect } from 'next/navigation';
-
+const { Badge, Descriptions } = require('antd');
 interface OneProjectPartProps {
   projectData: OneProject | null;
 }
@@ -145,9 +145,28 @@ function OneProjectPart({ projectData, ...restProps }: OneProjectPartProps) {
         <div className="inner">
           <img className="project-img" src={projectData.imgUrl} alt="" />
           <div className="project-title">{projectData.title}</div>
-          <div className="project-description">{projectData.description}</div>
-          <div className="text-center">티켓 목록</div>
-          <div className="mx-auto flex flex-wrap w-1/2">
+          <Descriptions title="Tiket Info" bordered>
+            <Descriptions.Item label="티켓이름" span={3}>
+              {projectData.title}
+            </Descriptions.Item>
+
+            <Descriptions.Item label="일정">
+              {projectData.date}
+            </Descriptions.Item>
+            <Descriptions.Item label="공연시간" span={2}>
+              {projectData.runningTime}
+            </Descriptions.Item>
+            <Descriptions.Item label="Status" span={3}>
+              <Badge status="processing" text="Running" />
+            </Descriptions.Item>
+
+            <Descriptions.Item label="티켓 정보">
+              {projectData.description}
+            </Descriptions.Item>
+          </Descriptions>
+
+          <div className="text-xl font-bold py-4">티켓 목록</div>
+          <div className=" flex flex-wrap gap-6 ">
             {projectData ? (
               projectData.tickets.map((v, i) => {
                 return (

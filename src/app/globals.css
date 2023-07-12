@@ -2,7 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-body {}
+@font-face {
+  font-family: "BagelFatOne";
+  font-weight: 400;
+  font-style: normal;
+  src: url("/fonts/BagelFatOne-Regular.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "a5";
+  font-weight: 400;
+  font-style: bold;
+  src: url("/fonts/a5.TTF") format("ttf");
+}
+
+body {
+  font-family: "a5";
+}
 
 .inner {
   width: 1240px;
@@ -45,5 +61,7 @@ body {}
   line-height: 45px;
   color: rgb(0, 0, 0);
   padding-top: 20px;
+
+
 
 }

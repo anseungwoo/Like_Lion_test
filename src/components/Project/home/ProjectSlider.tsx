@@ -24,14 +24,7 @@ function ProjectSlider({ available }: tikectAvailable) {
     <div className="project-wrapper ">
       {projects.map((oneProject, index) => {
         return oneProject ? (
-          <OneProjectThumb
-            key={oneProject.contract}
-            contract={oneProject.contract}
-            description={oneProject.description}
-            title={oneProject.title}
-            imgUrl={oneProject.imgUrl}
-            tickets={oneProject.tickets}
-          />
+          <OneProjectThumb key={oneProject.contract} oneProject={oneProject} />
         ) : (
           <Loding></Loding>
         );

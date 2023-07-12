@@ -27,16 +27,17 @@
 }
 
 .logo {
-  height: 20px;
-  width: 72px;
+  height: 32px;
+  width: 100px;
   margin-right: 10px;
+  object-fit: fill;
 }
 
 .header-menu-item {
   margin: 0px 10px;
   padding: 5px 16px;
   border-radius: 20px;
-  font: 16px 500 black;
+  font: 30px black;
   cursor: pointer;
 }
 
@@ -56,6 +57,7 @@
   font-size: 14px;
   border-radius: 20px;
   padding: 5px 50px;
+  line-height: 50px;
   white-space: nowrap;
   cursor: pointer;
 }

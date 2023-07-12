@@ -40,7 +40,7 @@ const HeaderCustom: FC<HeaderProps> = () => {
           <Link href="/">
             <Image
               className="logo"
-              src={`/images/logo.png`}
+              src={`/images/logo3.png`}
               width={100}
               height={50}
               alt=""

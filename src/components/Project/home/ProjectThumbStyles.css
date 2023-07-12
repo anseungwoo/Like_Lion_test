@@ -17,6 +17,8 @@
   margin: 0px 15px;
   position: relative;
   overflow: hidden;
+  font-family: "BagelFatOne";
+
   transition: opacity 0.5s ease-in-out;
 }
 

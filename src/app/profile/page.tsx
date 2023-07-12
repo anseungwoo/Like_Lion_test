@@ -9,7 +9,7 @@ import OneProjectThumb from '@/components/Project/home/OneProjectThumb';
 import TicketProjectCheck from '@/components/Project/home/TicketProjectCheck';
 import LoginDialog from '@/compounds/Redirect';
 import { redirect } from 'next/navigation';
-import Loding from '@/compounds/Loding';
+import { Loding } from '@/compounds/Loding';
 
 export default function profile() {
   const { account } = useContext(AppContext);
@@ -72,14 +72,7 @@ export default function profile() {
             {myProjects ? (
               myProjects.map((v, i) => {
                 return v ? (
-                  <OneProjectThumb
-                    key={`${v.contract}_${i}`}
-                    contract={v.contract}
-                    description={v.description}
-                    title={v.title}
-                    imgUrl={v.imgUrl}
-                    tickets={v.tickets}
-                  />
+                  <OneProjectThumb key={`${v.contract}_${i}`} oneProject={v} />
                 ) : (
                   <Loding></Loding>
                 );
