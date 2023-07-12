@@ -125,6 +125,9 @@ function OneTicketCheckPart({
             <Descriptions.Item label="티켓이름" span={3}>
               {projectData.title}
             </Descriptions.Item>
+            <Descriptions.Item label=" 장소/지역" span={3}>
+              {projectData.location}
+            </Descriptions.Item>
 
             <Descriptions.Item label="일정">
               {projectData.date}
