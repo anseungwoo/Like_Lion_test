@@ -120,7 +120,6 @@ function OneProjectPart({ projectData, ...restProps }: OneProjectPartProps) {
 
     if (lastCheckTime !== null) {
       setLastCheckTime(blockTimeToNextJSTime(lastCheckTime));
-      // setLastCheckTime((v) => Date.now() + 10000);
     }
   };
 
@@ -143,29 +142,49 @@ function OneProjectPart({ projectData, ...restProps }: OneProjectPartProps) {
     return (
       <div className="w-full flex justify-center">
         <div className="inner">
-          <img className="project-img" src={projectData.imgUrl} alt="" />
-          <div className="project-title">{projectData.title}</div>
-          <Descriptions title="Tiket Info" bordered>
-            <Descriptions.Item label="티켓이름" span={3}>
+          <img className="project-img " src={projectData.imgUrl} alt="" />
+          <div className="project-title text-white pb-2">
+            {projectData.title}
+          </div>
+
+          <Descriptions
+            labelStyle={{
+              color: 'rgba(255, 255, 255, 1.0)',
+              backgroundColor: 'rgba(255, 111, 255, 0.656)',
+              width: '150px',
+              fontSize: '20px',
+            }}
+            contentStyle={{
+              color: 'rgba(255, 255, 255, 1.0)',
+              backgroundColor: 'rgba(245, 107, 255, 0.478)',
+              fontSize: '20px',
+            }}
+            bordered
+          >
+            <Descriptions.Item label="티켓이름" span={4}>
               {projectData.title}
             </Descriptions.Item>
 
-            <Descriptions.Item label="일정">
+            <Descriptions.Item label="일정" span={4}>
               {projectData.date}
             </Descriptions.Item>
-            <Descriptions.Item label="공연시간" span={2}>
+            <Descriptions.Item label="공연시간" span={4}>
               {projectData.runningTime}
             </Descriptions.Item>
-            <Descriptions.Item label="Status" span={3}>
-              <Badge status="processing" text="Running" />
+            <Descriptions.Item label="Status" span={4}>
+              <Badge
+                status="processing"
+                text="Running"
+                style={{ fontSize: '20px', color: 'rgba(255, 255, 255, 1.0)' }}
+              />
             </Descriptions.Item>
 
-            <Descriptions.Item label="티켓 정보">
+            <Descriptions.Item label="티켓 정보" span={4}>
               {projectData.description}
             </Descriptions.Item>
           </Descriptions>
 
-          <div className="text-xl font-bold py-4">티켓 목록</div>
+          <div className="text-xl font-bold py-4 text-white">티켓 목록</div>
           <div className=" flex flex-wrap gap-6 ">
             {projectData ? (
               projectData.tickets.map((v, i) => {
@@ -186,16 +205,18 @@ function OneProjectPart({ projectData, ...restProps }: OneProjectPartProps) {
             )}
           </div>
 
-          <div className="flex flex-wrap justify-center my-3 w-[80%] mx-auto text-[20px]">
+          <div className="flex flex-wrap justify-center my-3 text-white w-[80%] mx-auto text-[20px]">
             출석일 수 : {count}
           </div>
           {account ? (
             nowTime > lastCheckTime + oneDayDateNumber ? (
               <div
-                className="flex flex-col justify-center items-center mx-auto hover:cursor-pointer border-[1px] border-black rounded-3xl w-[300px] py-2 text-center"
+                className="flex flex-col justify-center items-center mx-auto hover:cursor-pointer border-[1px] border-white rounded-3xl w-[300px] py-2 text-center"
                 onClick={clickAttendance}
               >
-                <div className="text-[18px] font-bold mb-1">출석하기</div>
+                <div className="text-[18px] text-white font-bold mb-1">
+                  출석하기
+                </div>
                 {lastCheckTime !== 0 ? (
                   <div className="text-[12px] text-gray-300">{`최근 출석 : ${dateToStrEng(
                     new Date(lastCheckTime)

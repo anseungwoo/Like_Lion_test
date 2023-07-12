@@ -67,8 +67,8 @@ export default function profile() {
     <div className="w-full flex justify-center">
       <div className="inner">
         <div className="text-[30px] font-bold py-10 px-2">
-          <div>내 프로젝트 목록</div>
-          <div className="bg-white grid grid-cols-3 auto-rows-auto gap-10 px-10 py-10">
+          <div className="text-white">내 프로젝트 목록</div>
+          <div className="grid grid-cols-3 auto-rows-auto gap-10 px-10 py-10">
             {myProjects ? (
               myProjects.map((v, i) => {
                 return v ? (
@@ -82,33 +82,31 @@ export default function profile() {
             )}
           </div>
         </div>
-        <div className="text-[30px] font-bold py-10 px-2">
-          <div>내 NFT 목록</div>
-          <div className="bg-white grid grid-cols-3 auto-rows-auto gap-10 px-10 py-10">
-            {myTickets ? (
-              myTickets.map((v, i) => {
-                return v ? (
-                  <TicketProjectCheck
-                    key={`${v.id}_${v.contract}`}
-                    id={v.id}
-                    contract={v.contract}
-                    imgUrl={v.imgUrl}
-                    isUsed={v.ticket_is_used}
-                  />
-                ) : (
-                  <Loding></Loding>
-                );
-              })
-            ) : (
-              <Loding></Loding>
-            )}
-          </div>
+        <div className="text-white text-[30px] font-bold">내 NFT 목록</div>
+        <div className="grid grid-cols-3 auto-rows-auto gap-10 px-10 py-10">
+          {myTickets ? (
+            myTickets.map((v, i) => {
+              return v ? (
+                <TicketProjectCheck
+                  key={`${v.id}_${v.contract}`}
+                  id={v.id}
+                  contract={v.contract}
+                  imgUrl={v.imgUrl}
+                  isUsed={v.ticket_is_used}
+                />
+              ) : (
+                <Loding></Loding>
+              );
+            })
+          ) : (
+            <Loding></Loding>
+          )}
         </div>
-        {/* <div className="text-[30px] font-bold py-10 px-2">
+      </div>
+      {/* <div className="text-[30px] font-bold py-10 px-2">
           <div>내 파츠 NFT</div>
           <ProjectThumbCompound />
         </div> */}
-      </div>
     </div>
   );
 }

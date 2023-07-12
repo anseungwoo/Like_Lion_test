@@ -34,53 +34,58 @@ const HeaderCustom: FC<HeaderProps> = () => {
   }, [projects]);
 
   return (
-    <div className="header_inner  ">
-      <header className="header-wrapper-home inner">
-        <nav className="navbar-home">
+    <div className="header_inner ">
+      <header className="inner header-wrapper-home">
+        <div className="flex justify-around w-full pl-4">
           <Link href="/">
             <Image
-              className="logo"
-              src={`/images/logo3.png`}
-              width={100}
+              className="logoHeader"
+              src={`/images/logo4.png`}
+              width={500}
               height={50}
               alt=""
             />
           </Link>
-
-          <Link href="/project">
-            <div className="header-menu-item">프로젝트</div>
-          </Link>
-          {account ? (
-            <Link href="/profile">
-              <div className="header-menu-item">프로필</div>
+          <nav className="navbar-home ">
+            <Link href="/project">
+              <div className="header-menu-item">project</div>
             </Link>
+            {account ? (
+              <Link href="/profile">
+                <div className="header-menu-item">profile</div>
+              </Link>
+            ) : (
+              <>
+                <button
+                  className="header-menu-item"
+                  onClick={() => {
+                    setOpenDialog(true);
+                  }}
+                >
+                  profile
+                </button>
+                <LoginDialog
+                  title="프로필 페이지는"
+                  openDialog={openDialog}
+                  setOpenDialog={setOpenDialog}
+                ></LoginDialog>
+              </>
+            )}
+          </nav>
+          {account ? (
+            <div className="connect-wallet-button">
+              {account.substring(0, 4)}...
+              {account.substring(account.length - 4)}
+            </div>
           ) : (
-            <>
-              <button
-                className="header-menu-item"
-                onClick={() => {
-                  setOpenDialog(true);
-                }}
-              >
-                프로필
-              </button>
-              <LoginDialog
-                title="프로필 페이지는"
-                openDialog={openDialog}
-                setOpenDialog={setOpenDialog}
-              ></LoginDialog>
-            </>
+            <button
+              className="connect-wallet-button"
+              onClick={clickWalletLogin}
+            >
+              Connect Wallet
+            </button>
           )}
-        </nav>
-        {account ? (
-          <div className="connect-wallet-button">
-            {account.substring(0, 4)}...{account.substring(account.length - 4)}
-          </div>
-        ) : (
-          <button className="connect-wallet-button" onClick={clickWalletLogin}>
-            Connect Wallet
-          </button>
-        )}
+        </div>
       </header>
     </div>
   );

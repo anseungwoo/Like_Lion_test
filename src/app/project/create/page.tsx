@@ -340,7 +340,7 @@ const ProjectCreatePage = () => {
   return (
     <div className="flex justify-center">
       <div className="inner">
-        <div className="bg-white flex flex-col items-stretch mx-10 my-8">
+        <div className=" flex flex-col items-stretch mx-10 my-8 text-white">
           <div className="text-[20px] self-start font-bold">프로젝트 정보</div>
           <div className="ml-8">
             <TitleWithInput

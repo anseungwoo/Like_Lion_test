@@ -84,6 +84,7 @@ export const getMyLastTimeOfAttendance = async (
       .call({
         from: account,
       });
+
     return Number(response);
   } catch (error) {
     console.error(error);

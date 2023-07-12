@@ -28,7 +28,7 @@ const TitleWithInput: FC<TitleWithInputProps> = ({
         {title}
       </h1>
       <input
-        className="border-black border-[1px] rounded-lg w-full px-2 py-1 my-1 hover:cursor-pointer hover:border-red-300"
+        className="border-black text-black bg-white bg-opacity-30 border-[1px] rounded-lg w-full px-2 py-1 my-1 hover:cursor-pointer hover:border-red-300"
         type="text"
         value={inputValue}
         placeholder={placeholder ?? ''}

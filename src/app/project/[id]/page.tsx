@@ -30,7 +30,7 @@ export default function ProjectId() {
   }, []);
 
   return (
-    <div className="bg-white">
+    <div className="">
       {id != null && oneProjectData !== null ? (
         <OneProjectPart projectData={oneProjectData} />
       ) : (

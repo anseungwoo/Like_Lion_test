@@ -9,7 +9,7 @@ function FooterCompound() {
       <div className="footer-title">
         <Image
           className="logo"
-          src={`/images/logo3.png`}
+          src={`/images/logo4.png`}
           width={100}
           height={50}
           alt=""

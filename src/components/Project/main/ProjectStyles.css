@@ -1,13 +1,13 @@
 /* ############### Project Thumb section ############### */
 
 .project-create-button {
-  color: black;
+  color: white;
   cursor: pointer;
   width: 200px;
   height: 30px;
   margin: 0 auto;
   margin-bottom: 10px;
-  border: 1px solid black;
+  border: 1px solid white;
   text-align: center;
   border-radius: 10px;
 }
@@ -75,14 +75,16 @@
   border-radius: 20px;
   font: 16px bold gray;
 }
+
 .project-minting-active {
   margin: 10px auto;
   display: flex;
   width: 180px;
   height: 40px;
+  color: white;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
+  border: 2px solid rgb(79, 255, 79);
   border-radius: 20px;
   font: 16px bold;
   cursor: pointer;
@@ -100,6 +102,8 @@
 .quest-container:hover {
   border: 2px solid pink;
 }
+
+
 
 .quest-success-btn {
   margin-top: 10px;

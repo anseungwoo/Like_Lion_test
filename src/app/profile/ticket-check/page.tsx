@@ -36,7 +36,7 @@ export default function TicketCheck() {
     return redirect('/');
   }
   return (
-    <div className="bg-white">
+    <div className="">
       {ticketIdStr !== null &&
       oneProjectData !== null &&
       oneTicketData !== null ? (

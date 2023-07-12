@@ -26,18 +26,26 @@ function OneProjectThumb({ oneProject }: OneProjectThumbProps) {
       href={`/project/${oneProject.contract}`}
       className="thumb-card hover:cursor-pointer"
     >
-      <img className="thumb-card-img" src={oneProject.imgUrl} alt="" />
-      <div className=" p-3">
-        <div className="thumb-card-title pb-2  ">{oneProject.title}</div>
-        <div className="thumb-card-description">{oneProject.description}</div>
-      </div>
+      <div className="extraExternalCard">
+        <div className="externalCard">
+          <div className="image-cover">
+            <img className="thumb-card-img" src={oneProject.imgUrl} alt="" />
+          </div>
+          <div className=" p-3">
+            <div className="thumb-card-title pb-2  ">{oneProject.title}</div>
+            <div className="thumb-card-description">
+              {oneProject.description}
+            </div>
+          </div>
 
-      <div className="flex justify-between">
-        <div className="text-black text-2xl font-medium p-4">
-          총 티켓 : {totalTicketNum}
-        </div>
-        <div className="text-black text-2xl font-medium p-4">
-          남은 티켓 : {remainTicketNum}
+          <div className="flex justify-between">
+            <div className="text-black text-2xl font-medium p-4">
+              총 티켓 : {totalTicketNum}
+            </div>
+            <div className="text-black text-2xl font-medium p-4">
+              남은 티켓 : {remainTicketNum}
+            </div>
+          </div>
         </div>
       </div>
     </Link>

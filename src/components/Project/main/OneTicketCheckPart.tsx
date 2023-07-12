@@ -105,8 +105,23 @@ function OneTicketCheckPart({
       <div className="w-full flex justify-center">
         <div className="inner">
           <img className="project-img" src={ticketData.imgUrl} alt="" />
-          <div className="project-title">{projectData.title}</div>
-          <Descriptions title="Tiket Info" bordered>
+          <div className="project-title text-white pb-2">
+            {projectData.title}
+          </div>
+          <Descriptions
+            labelStyle={{
+              color: 'rgba(255, 255, 255, 1.0)',
+              backgroundColor: 'rgba(255, 111, 255, 0.656)',
+              width: '150px',
+              fontSize: '20px',
+            }}
+            contentStyle={{
+              color: 'rgba(255, 255, 255, 1.0)',
+              backgroundColor: 'rgba(245, 107, 255, 0.478)',
+              fontSize: '20px',
+            }}
+            bordered
+          >
             <Descriptions.Item label="티켓이름" span={3}>
               {projectData.title}
             </Descriptions.Item>
