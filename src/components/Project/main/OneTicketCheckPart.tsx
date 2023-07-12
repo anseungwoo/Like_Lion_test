@@ -16,6 +16,8 @@ import {
   transactionTracking,
 } from '@/utils/web3/web3_v2';
 import { AppContext } from '@/app/layout';
+import { redirect } from 'next/navigation';
+import { BlockLoding } from '@/compounds/Loding';
 
 export interface ProjectData {
   id: number;
@@ -50,6 +52,9 @@ function OneTicketCheckPart({
   const [isOwner, setIsOwner] = useState<boolean>(false);
   const [validUse, setValidUse] = useState<boolean>(false);
 
+  const [buyLoding, setBuyLoding] = useState<boolean>(false);
+  const [isRedirect, setIsRedirect] = useState<boolean>(false);
+
   const checkOwner = async () => {
     const response =
       (await ownerOfTokenId(projectData.contract, ticketData.id)) ?? '';
@@ -73,6 +78,8 @@ function OneTicketCheckPart({
   }, []);
 
   const useTicketClick = async () => {
+    setBuyLoding(true);
+
     const response = await processTicketUsing(
       projectData.contract,
       account,
@@ -81,6 +88,7 @@ function OneTicketCheckPart({
     console.log('useTicketClick');
     console.log(response);
     checkValidTicket();
+    setIsRedirect(true);
     setOpenDialog(false);
   };
 
@@ -113,19 +121,33 @@ function OneTicketCheckPart({
               <div className="project_ticket_nuUse">사용 불가 티켓</div>
             )}
           </div>
-
-          <Dialog open={openDialog} onClose={handleClose}>
-            <DialogTitle>티켓 사용/입장 하기</DialogTitle>
-            <DialogContent>
-              <DialogContentText>
-                티켓 관리자외에 사용/입장하기 누를시 불이익이 있을 수 있습니다.
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={handleClose}>취소</Button>
-              <Button onClick={useTicketClick}>사용/입장</Button>
-            </DialogActions>
-          </Dialog>
+          {isRedirect ? (
+            redirect('/')
+          ) : (
+            <Dialog open={openDialog} onClose={handleClose}>
+              <DialogTitle>티켓 사용/입장 하기</DialogTitle>
+              <DialogContent>
+                <DialogContentText>
+                  티켓 관리자외에 사용/입장하기 누를시 불이익이 있을 수
+                  있습니다.
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                {buyLoding ? (
+                  <div className="flex ">
+                    <div className="self-center"> 티켓 사용 유무 체크중..</div>
+                    <BlockLoding></BlockLoding>
+                  </div>
+                ) : (
+                  <div>
+                    <Button onClick={handleClose}>취소</Button>
+                    <Button onClick={useTicketClick}>사용/입장</Button>
+                  </div>
+                )}
+              </DialogActions>
+            </Dialog>
+          )}
+          ;
         </div>
       </div>
     );

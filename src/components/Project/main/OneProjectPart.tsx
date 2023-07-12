@@ -22,7 +22,8 @@ import {
 import { AppContext } from '@/app/layout';
 import { OneTicket } from '@/domain/OneTicket';
 import { OneProject } from '@/domain/OneProject';
-import Loding from '@/compounds/Loding';
+import { BlockLoding, Loding } from '@/compounds/Loding';
+import { redirect } from 'next/navigation';
 
 interface OneProjectPartProps {
   projectData: OneProject | null;
@@ -43,6 +44,9 @@ function OneProjectPart({ projectData, ...restProps }: OneProjectPartProps) {
   // const [count, setCount] = useState<number[]>([]);
   const [count, setCount] = useState<number>(0);
   const { account } = useContext(AppContext);
+  const [buyLoding, setBuyLoding] = useState<boolean>(false);
+  const [isRedirect, setIsRedirect] = useState<boolean>(false);
+
   const clickPurchaseBtn = () => {
     if (selectedId !== null) {
       setOpenDialog(true);
@@ -68,6 +72,7 @@ function OneProjectPart({ projectData, ...restProps }: OneProjectPartProps) {
         }
       }
       if (temp !== null) {
+        setBuyLoding(true);
         const response = await ticketBuying(
           selectedId,
           temp.price,
@@ -76,6 +81,7 @@ function OneProjectPart({ projectData, ...restProps }: OneProjectPartProps) {
         );
         console.log('구매 함수 구매함수!!!!');
         console.log(response);
+        setIsRedirect(true);
       } else {
       }
       // TODO response 성공/실패 확인
@@ -91,7 +97,7 @@ function OneProjectPart({ projectData, ...restProps }: OneProjectPartProps) {
   useEffect(() => {
     getAttendance();
     getLastTime();
-  }, []);
+  }, [account]);
 
   const getAttendance = async () => {
     const attendenceNum = await attendancePointCheck(
@@ -201,19 +207,32 @@ function OneProjectPart({ projectData, ...restProps }: OneProjectPartProps) {
               티켓 구매하기
             </div>
           )}
-          <Dialog open={openDialog} onClose={handleClose}>
-            <DialogTitle>NFT 구매</DialogTitle>
-            <DialogContent>
-              <DialogContentText>
-                당신은 {count}번의 출석을 하였습니다. 지정하신 {selectedId}번
-                NFT는 구매가 가능합니다.
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={handleClose}>취소</Button>
-              <Button onClick={purchaseTicket}>구매</Button>
-            </DialogActions>
-          </Dialog>
+          {isRedirect ? (
+            redirect('/')
+          ) : (
+            <Dialog open={openDialog} onClose={handleClose}>
+              <DialogTitle>NFT 구매</DialogTitle>
+              <DialogContent>
+                <DialogContentText>
+                  당신은 {count}번의 출석을 하였습니다. 지정하신 {selectedId}번
+                  NFT는 구매가 가능합니다.
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                {buyLoding ? (
+                  <div className="flex ">
+                    <div className="self-center"> 티켓 구매중..</div>
+                    <BlockLoding></BlockLoding>
+                  </div>
+                ) : (
+                  <div>
+                    <Button onClick={handleClose}>취소</Button>
+                    <Button onClick={purchaseTicket}>구매</Button>
+                  </div>
+                )}
+              </DialogActions>
+            </Dialog>
+          )}
         </div>
       </div>
     );

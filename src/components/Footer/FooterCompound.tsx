@@ -20,28 +20,29 @@ function FooterCompound() {
       </div>
       <div className="footer-row">
         <div className="footer-column">
-          <FooterLink isTitle={true}>My Account</FooterLink>
-          <FooterLink>Profile</FooterLink>
-          <FooterLink>My W3ST</FooterLink>
-          <FooterLink>Settings</FooterLink>
+          <FooterLink isTitle={true} newTarget="">
+            My Account
+          </FooterLink>
+          <FooterLink link="/project" newTarget="">
+            My Account
+          </FooterLink>
+          <FooterLink link="/profile" newTarget="">
+            Profile
+          </FooterLink>
         </div>
         <div className="footer-column">
-          <FooterLink isTitle={true}>Resources</FooterLink>
-          <FooterLink>Branding</FooterLink>
-          <FooterLink>Discord</FooterLink>
-          <FooterLink>Twitter</FooterLink>
-        </div>
-        <div className="footer-column">
-          <FooterLink isTitle={true}>Company</FooterLink>
-          <FooterLink>CyberConnect</FooterLink>
-          <FooterLink>Why Link3</FooterLink>
-          <FooterLink>User Guide</FooterLink>
-          <FooterLink>Handbook for Org</FooterLink>
-        </div>
-        <div className="footer-column">
-          <FooterLink isTitle={true}>Contact</FooterLink>
-          <FooterLink>Mail</FooterLink>
-          <FooterLink>Phone</FooterLink>
+          <FooterLink isTitle={true} newTarget="">
+            Resources
+          </FooterLink>
+          <FooterLink link="https://discord.gg/fBCX6uCs" newTarget="_blank">
+            Discord
+          </FooterLink>
+          <FooterLink
+            link="https://github.com/anseungwoo/Like_Lion_test"
+            newTarget="_blank"
+          >
+            git
+          </FooterLink>
         </div>
       </div>
     </footer>

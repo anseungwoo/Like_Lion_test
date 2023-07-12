@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 import { useTicketProjectList } from '@/context/contractContext';
 import { OneProject } from '@/domain/OneProject';
 import OneProjectPart from '@/components/Project/main/OneProjectPart';
-import Loding from '@/compounds/Loding';
+import { Loding } from '@/compounds/Loding';
 
 export default function ProjectId() {
   const id = usePathname()?.substring(9);

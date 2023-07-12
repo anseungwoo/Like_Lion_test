@@ -3,7 +3,7 @@ import React from 'react';
 // import projectMockData from "../../../mock-data/v0/projects.json";
 import OneProjectThumb from './OneProjectThumb';
 import { useTicketProjectList } from '@/context/contractContext';
-import Loding from '@/compounds/Loding';
+import { Loding } from '@/compounds/Loding';
 
 interface tikectAvailable {
   available: boolean;

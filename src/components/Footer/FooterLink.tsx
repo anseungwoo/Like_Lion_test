@@ -6,14 +6,16 @@ interface FooterLinkProps {
   className?: string;
   children?: ReactNode;
   isTitle?: boolean;
+  link?: string;
+  newTarget: string;
 }
 
-function FooterLink({ children, isTitle }: FooterLinkProps) {
+function FooterLink({ children, isTitle, link, newTarget }: FooterLinkProps) {
   if (isTitle ?? false) {
     return <div className="footer-link-title">{children}</div>;
   }
   return (
-    <Link href="/" className="footer-link">
+    <Link href={link ?? '/'} target={newTarget} className="footer-link">
       {children}
     </Link>
   );
