@@ -24,12 +24,14 @@ import { OneTicket } from '@/domain/OneTicket';
 import { OneProject } from '@/domain/OneProject';
 import { BlockLoding, Loding } from '@/compounds/Loding';
 import { redirect } from 'next/navigation';
+import { useTicketProjectList } from '@/context/contractContext';
 const { Badge, Descriptions } = require('antd');
 interface OneProjectPartProps {
   projectData: OneProject | null;
 }
 
 function OneProjectPart({ projectData, ...restProps }: OneProjectPartProps) {
+  const { updateTickets } = useTicketProjectList();
   const [lastCheckTime, setLastCheckTime] = useState<number>(0);
   const [nowTime, setNowTime] = useState<number>(Date.now());
   const [openDialog, setOpenDialog] = useState<boolean>(false);
@@ -95,6 +97,7 @@ function OneProjectPart({ projectData, ...restProps }: OneProjectPartProps) {
     }, 100);
   }, []);
   useEffect(() => {
+    updateTickets(projectData!.contract);
     getAttendance();
     getLastTime();
   }, [account]);

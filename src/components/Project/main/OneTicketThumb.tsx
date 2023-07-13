@@ -18,7 +18,6 @@ function OneTicketThumb({
         <div> 가격 : {value.price}</div>
         <div> 좌석 : {value.seat}</div>
         <div> 최소출석일수 : {value.minimum_attendance}</div>
-        <div> 티켓 발급 상태 : {value.ticket_is_used ? '발급' : '미발급'}</div>
         <div className="absolute whitespace-nowrap top-1/2 translate-x-1/2 right-1/2 translate-y-[-50%]  text-red-500 font-extrabold text-[25px] red-300">
           판매 완료
         </div>
@@ -35,7 +34,6 @@ function OneTicketThumb({
         <div> 가격 : {value.price}</div>
         <div> 좌석 : {value.seat}</div>
         <div> 최소출석일수 : {value.minimum_attendance}</div>
-        <div> 티켓 발급 상태 : {value.ticket_is_used ? '발급' : '미발급'}</div>
       </div>
     );
   } else {
@@ -56,7 +54,6 @@ function OneTicketThumb({
         <div> 가격 : {value.price}</div>
         <div> 좌석 : {value.seat}</div>
         <div> 최소출석일수 : {value.minimum_attendance}</div>
-        <div> 티켓 발급 상태 : {value.ticket_is_used ? '발급' : '미발급'}</div>
       </div>
     );
   }
